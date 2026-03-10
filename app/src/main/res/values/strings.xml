@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">VK_Homework</string>
+    <string name="input_label">Введите текст или номер</string>
+    <string name="btn_open_activity">Открыть вторую Activity</string>
+    <string name="btn_call_friend">Позвонить другу</string>
+    <string name="btn_share_text">Поделиться текстом</string>
+    <string name="error_empty_field">Поле не должно быть пустым!</string>
+    <string name="received_text_prefix">Полученный текст: %1$s</string>
+    <string name="chooser_title">Поделиться через…</string>
+    <string name="error_invalid_phone">Введите корректный номер телефона!</string>
 </resources>
