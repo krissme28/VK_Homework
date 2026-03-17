@@ -11,15 +11,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.vk_homework.ui.theme.VK_HomeworkTheme
 
 @Composable
 fun AppListContent(
     apps: List<AppListItem>,
     innerPadding: PaddingValues,
     onClick: () -> Unit,
+    onLogoClick: (AppListItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -35,7 +34,8 @@ fun AppListContent(
             itemsIndexed(apps) { index, appListItem ->
                 AppListItemCard(
                     appListItem,
-                    onClick = onClick
+                    onClick = onClick,
+                    onLogoClick = { onLogoClick(appListItem) }
                 )
 
                 if (index < apps.lastIndex) {

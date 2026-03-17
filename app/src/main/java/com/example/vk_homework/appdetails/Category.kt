@@ -1,21 +1,13 @@
 package com.example.vk_homework.appdetails
 
-enum class Category {
-    FINANCE,
-    APP,
-    GAME,
-    TRANSPORT,
-    COMMUNICATION,
-    PURCHASES
-}
+import androidx.annotation.StringRes
+import com.example.vk_homework.R
 
-fun Category.toUiString(): String {
-    return when (this) {
-        Category.FINANCE -> "Финансы"
-        Category.GAME -> "Развлечения"
-        Category.TRANSPORT -> "Транспорт и Навигация"
-        Category.APP -> "Приложение"
-        Category.COMMUNICATION -> "Общение"
-        Category.PURCHASES -> "Покупки"
-    }
+enum class Category(@StringRes val labelRes: Int) {
+    FINANCE(R.string.category_finance),
+    GAME(R.string.category_game),
+    TRANSPORT(R.string.category_transport),
+    APP(R.string.category_app),
+    COMMUNICATION(R.string.category_communication),
+    PURCHASES(R.string.category_purchases)
 }

@@ -26,6 +26,7 @@ import com.example.vk_homework.R
 fun AppListItemCard(
     appListItem: AppListItem,
     onClick: () -> Unit,
+    onLogoClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -44,6 +45,7 @@ fun AppListItemCard(
             modifier = Modifier
                 .padding(16.dp)
                 .clip(RoundedCornerShape(16.dp))
+                .clickable { onLogoClick() }
                 .size(64.dp)
         )
 
@@ -69,7 +71,7 @@ fun AppListItemCard(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = appListItem.category,
+                text = stringResource(appListItem.category.labelRes),
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,
