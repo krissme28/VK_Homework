@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">VK_Homework</string>
+    <string name="category_app">Приложение</string>
+    <string name="category_game">Развлечения</string>
+    <string name="category_finance">Финансы</string>
+    <string name="category_transport">Транспорт и Навигация</string>
+    <string name="category_communication">Общение</string>
+    <string name="category_purchases">Покупки</string>
+    <string name="app_details_age">Возраст</string>
+    <string name="app_details_size">Размер</string>
+    <string name="install">Установить</string>
+    <string name="app_details_screenshots">Скриншоты</string>
+    <string name="app_details_description">Описание приложения</string>
+    <string name="app_details_read_more">Читать подробнее</string>
+    <string name="app_details_developer">Разработчик</string>
+    <string name="under_developement">В процессе разработки</string>
+    <string name="apps">Приложения</string>
+    <string name="rustore_logo">Логотип Rustore</string>
+    <string name="icon_name">%1$s иконка</string>
 </resources>
