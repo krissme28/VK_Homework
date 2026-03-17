@@ -18,7 +18,7 @@ import com.example.vk_homework.ui.theme.VK_HomeworkTheme
 import com.example.vk_homework.R
 
 @Composable
-fun Developer(
+fun AppDeveloperRow(
     name: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -44,7 +44,7 @@ fun Developer(
 @Composable
 private fun Preview() {
     VK_HomeworkTheme() {
-        Developer(
+        AppDeveloperRow(
             name = "VK Play",
             onClick = {},
             modifier = Modifier.fillMaxWidth(),

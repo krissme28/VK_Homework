@@ -71,7 +71,7 @@ fun AppListItemCard(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = stringResource(appListItem.category.labelRes),
+                text = stringResource(appListItem.appCategory.labelRes),
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,
