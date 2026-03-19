@@ -11,15 +11,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.vk_homework.ui.theme.VK_HomeworkTheme
 
 @Composable
 fun AppListContent(
-    apps: List<AppListItem>,
+    appList: List<AppListItem>,
     innerPadding: PaddingValues,
     onClick: () -> Unit,
+    onLogoClick: (AppListItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(
@@ -32,13 +31,14 @@ fun AppListContent(
         LazyColumn(
             contentPadding = PaddingValues(top = 16.dp, bottom = 16.dp)
         ) {
-            itemsIndexed(apps) { index, appListItem ->
+            itemsIndexed(appList) { index, appListItem ->
                 AppListItemCard(
                     appListItem,
-                    onClick = onClick
+                    onClick = onClick,
+                    onLogoClick = { onLogoClick(appListItem) }
                 )
 
-                if (index < apps.lastIndex) {
+                if (index < appList.lastIndex) {
                     HorizontalDivider(
                         thickness = 0.5.dp,
                         modifier = Modifier.padding(start = 88.dp, end = 16.dp),

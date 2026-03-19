@@ -45,7 +45,7 @@ fun AppDetailsScreen(
         )
         Spacer(Modifier.height(8.dp))
         AppDetailsHeader(
-            app = app,
+            appDetails = app,
             modifier = Modifier.padding(horizontal = 16.dp),
         )
         Spacer(Modifier.height(16.dp))
@@ -79,7 +79,7 @@ fun AppDetailsScreen(
             color = MaterialTheme.colorScheme.outlineVariant,
         )
         Spacer(Modifier.height(12.dp))
-        Developer(
+        AppDeveloperRow(
             name = app.developer,
             onClick = {
                 Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
@@ -91,10 +91,10 @@ fun AppDetailsScreen(
     }
 }
 
-private fun getApp(): App = App(
+private fun getApp(): AppDetails = AppDetails(
     name = "Гильдия Героев: Экшен ММО РПГ",
     developer = "VK Play",
-    category = Category.GAME,
+    appCategory = AppCategory.GAME,
     ageRating = 12,
     size = 223.7f,
     screenshotUrlList = listOf(

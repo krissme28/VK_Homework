@@ -1,9 +1,9 @@
 package com.example.vk_homework.appdetails
 
-data class App(
+data class AppDetails(
     val name: String,
     val developer: String,
-    val category: Category,
+    val appCategory: AppCategory,
     val ageRating: Int,
     val size: Float,
     val iconUrl: String,
