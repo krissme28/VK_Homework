@@ -1,4 +1,6 @@
-package com.example.vk_homework.applist
+package com.example.vk_homework.applist.presentation
+
+import com.example.vk_homework.applist.domain.AppListItem
 
 sealed class AppListState {
     data object Loading : AppListState()

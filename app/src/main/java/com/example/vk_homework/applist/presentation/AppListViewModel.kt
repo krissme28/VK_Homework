@@ -1,15 +1,15 @@
-package com.example.vk_homework.applist
+package com.example.vk_homework.applist.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vk_homework.data.AppRepository
+import com.example.vk_homework.applist.domain.AppRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class AppListViewModel(private val repository: AppRepository = AppRepository()) : ViewModel() {
+class AppListViewModel(private val repository: AppRepository) : ViewModel() {
     private val _uiState = MutableStateFlow<AppListState>(AppListState.Loading)
     val uiState = _uiState.asStateFlow()
 
@@ -23,7 +23,7 @@ class AppListViewModel(private val repository: AppRepository = AppRepository()) 
     private fun loadApps() {
         viewModelScope.launch {
             try {
-                val data = repository.getApps()
+                val data = repository.getAppList()
                 _uiState.value = AppListState.Content(appList = data)
             } catch (e: Exception) {
                 _uiState.value = AppListState.Error(error = e.localizedMessage)

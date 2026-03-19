@@ -1,4 +1,4 @@
-package com.example.vk_homework.applist
+package com.example.vk_homework.applist.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
