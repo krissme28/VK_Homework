@@ -9,10 +9,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class AppListViewModel(
-    private val repository: AppRepository = AppRepository()) : ViewModel() {
-    private val _apps = MutableStateFlow<List<AppListItem>>(emptyList())
-    val apps = _apps.asStateFlow()
+class AppListViewModel(private val repository: AppRepository = AppRepository()) : ViewModel() {
+    private val _uiState = MutableStateFlow<AppListState>(AppListState.Loading)
+    val uiState = _uiState.asStateFlow()
 
     private val _showSnackbarEvent = MutableSharedFlow<String>()
     val showSnackbarEvent = _showSnackbarEvent.asSharedFlow()
@@ -22,7 +21,14 @@ class AppListViewModel(
     }
 
     private fun loadApps() {
-        _apps.value = repository.getApps()
+        viewModelScope.launch {
+            try {
+                val data = repository.getApps()
+                _uiState.value = AppListState.Content(appList = data)
+            } catch (e: Exception) {
+                _uiState.value = AppListState.Error(error = e.localizedMessage)
+            }
+        }
     }
 
     fun onLogoClick(appName: String) {

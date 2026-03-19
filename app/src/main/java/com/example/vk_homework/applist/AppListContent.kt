@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AppListContent(
-    apps: List<AppListItem>,
+    appList: List<AppListItem>,
     innerPadding: PaddingValues,
     onClick: () -> Unit,
     onLogoClick: (AppListItem) -> Unit,
@@ -31,14 +31,14 @@ fun AppListContent(
         LazyColumn(
             contentPadding = PaddingValues(top = 16.dp, bottom = 16.dp)
         ) {
-            itemsIndexed(apps) { index, appListItem ->
+            itemsIndexed(appList) { index, appListItem ->
                 AppListItemCard(
                     appListItem,
                     onClick = onClick,
                     onLogoClick = { onLogoClick(appListItem) }
                 )
 
-                if (index < apps.lastIndex) {
+                if (index < appList.lastIndex) {
                     HorizontalDivider(
                         thickness = 0.5.dp,
                         modifier = Modifier.padding(start = 88.dp, end = 16.dp),
