@@ -1,4 +1,4 @@
-package com.example.vk_homework.applist
+package com.example.vk_homework.applist.presentation
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.vk_homework.R
+import com.example.vk_homework.applist.domain.AppListItem
 
 @Composable
 fun AppListItemCard(
@@ -71,7 +72,7 @@ fun AppListItemCard(
             Spacer(Modifier.height(4.dp))
 
             Text(
-                text = stringResource(appListItem.appCategory.labelRes),
+                text = stringResource(appListItem.appCategory.getLabelRes()),
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,

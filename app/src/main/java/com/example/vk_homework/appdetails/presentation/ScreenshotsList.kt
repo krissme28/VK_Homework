@@ -1,4 +1,4 @@
-package com.example.vk_homework.appdetails
+package com.example.vk_homework.appdetails.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues

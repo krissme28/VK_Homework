@@ -1,8 +1,8 @@
-package com.example.vk_homework.appdetails
+package com.example.vk_homework.appdetails.domain
 
 data class AppDetails(
     val name: String,
-    val developer: String,
+    val developer: Developer,
     val appCategory: AppCategory,
     val ageRating: Int,
     val size: Float,
