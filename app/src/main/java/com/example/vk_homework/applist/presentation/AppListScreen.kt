@@ -17,16 +17,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.vk_homework.ui.theme.RuStoreBlue
-import com.example.vk_homework.ui.theme.VK_HomeworkTheme
 
 @Composable
 fun AppListScreen(
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: AppListViewModel = viewModel()
+    viewModel: AppListViewModel
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val snackbarHostState = remember { SnackbarHostState() }
@@ -69,15 +66,5 @@ fun AppListScreen(
                 )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AppListScreenPreview() {
-    VK_HomeworkTheme() {
-        AppListScreen(
-            onClick = {}
-        )
     }
 }

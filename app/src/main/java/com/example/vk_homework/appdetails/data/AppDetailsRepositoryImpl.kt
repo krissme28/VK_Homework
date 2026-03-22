@@ -2,8 +2,9 @@ package com.example.vk_homework.appdetails.data
 
 import com.example.vk_homework.appdetails.domain.AppDetails
 import com.example.vk_homework.appdetails.domain.AppDetailsRepository
+import javax.inject.Inject
 
-class AppDetailsRepositoryImpl : AppDetailsRepository {
+class AppDetailsRepositoryImpl @Inject constructor() : AppDetailsRepository {
     override fun getAppDetails(): AppDetails {
         val dto = AppDetailsDto(
             id = 1,

@@ -18,7 +18,7 @@ import com.example.vk_homework.applist.domain.AppListItem
 fun AppListContent(
     appList: List<AppListItem>,
     innerPadding: PaddingValues,
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
     onLogoClick: (AppListItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
