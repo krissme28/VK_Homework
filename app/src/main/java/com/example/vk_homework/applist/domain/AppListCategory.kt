@@ -6,5 +6,18 @@ enum class AppListCategory {
     TRANSPORT,
     APP,
     COMMUNICATION,
-    PURCHASES
+    HEALTH,
+    EDUCATION,
+    SHOPPING,
+    PHOTO,
+    PERFORMANCE,
+    UTILITIES,
+    WEATHER,
+    MUSIC,
+    BOOKS,
+    BUSINESS,
+    FOOD,
+    NEWS,
+    LIFESTYLE
+
 }

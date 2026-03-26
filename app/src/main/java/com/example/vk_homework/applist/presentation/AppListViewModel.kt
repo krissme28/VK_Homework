@@ -25,11 +25,30 @@ class AppListViewModel @Inject constructor(private val repository: AppRepository
 
     private fun loadApps() {
         viewModelScope.launch {
+            //на случай, если нужно перезагрузить данные (например, swipe-to-refresh)
+            _uiState.value = AppListState.Loading
+
             try {
                 val data = repository.getAppList()
-                _uiState.value = AppListState.Content(appList = data)
+                if (data.isEmpty()) {
+                    _uiState.value = AppListState.Empty
+                } else {
+                    _uiState.value = AppListState.Content(appList = data)
+                }
             } catch (e: Exception) {
-                _uiState.value = AppListState.Error(error = e.localizedMessage)
+                _uiState.value = AppListState.Error(
+                    error = e.localizedMessage ?: "Произошла неизвестная ошибка"
+                )
+            }
+        }
+    }
+
+    fun loadAppDetails(id: String) {
+        viewModelScope.launch {
+            try {
+                val details = repository.getAppDetails(id)
+            } catch (e: Exception) {
+                _showSnackbarEvent.emit("Ошибка загрузки деталей")
             }
         }
     }

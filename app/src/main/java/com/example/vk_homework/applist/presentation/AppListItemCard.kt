@@ -38,7 +38,7 @@ fun AppListItemCard(
     ) {
         AsyncImage(
             model = appListItem.iconUrl,
-            error = painterResource(R.drawable.sber),
+            error = painterResource(appListItem.appCategory.getPlaceholderRes()),
             contentDescription = stringResource(
                 R.string.icon_name,
                 appListItem.name

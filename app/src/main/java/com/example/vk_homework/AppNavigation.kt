@@ -13,6 +13,7 @@ import com.example.vk_homework.applist.presentation.AppListViewModel
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = Screen.AppList.route
@@ -20,11 +21,11 @@ fun AppNavigation() {
 
         // --- ЭКРАН СПИСКА ---
         composable(Screen.AppList.route) {
-            val hiltViewModel = hiltViewModel<AppListViewModel>()
+            val viewModel: AppListViewModel = hiltViewModel()
             AppListScreen(
-                viewModel = hiltViewModel,
-                onClick = { id ->
-                    navController.navigate(Screen.AppDetails.createRoute(id))
+                viewModel = viewModel,
+                onClick = { appId ->
+                    navController.navigate(Screen.AppDetails.createRoute(appId))
                 }
             )
         }

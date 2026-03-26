@@ -1,5 +1,6 @@
 package com.example.vk_homework.applist.domain
 
 interface AppRepository {
-    fun getAppList(): List<AppListItem>
+    suspend fun getAppList(): List<AppListItem>
+    suspend fun getAppDetails(id: String): AppListItem
 }

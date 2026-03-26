@@ -57,6 +57,12 @@ fun AppListScreen(
                 }
             }
 
+            is AppListState.Empty -> {
+                Box(Modifier.fillMaxSize().padding(innerPadding), contentAlignment = Alignment.Center) {
+                    Text(text = "Список приложений пуст", color = Color.White)
+                }
+            }
+
             is AppListState.Content -> {
                 AppListContent(
                     appList = state.appList,
