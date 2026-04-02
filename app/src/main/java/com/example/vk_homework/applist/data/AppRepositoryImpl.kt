@@ -3,8 +3,9 @@ package com.example.vk_homework.applist.data
 import com.example.vk_homework.applist.domain.AppListCategory
 import com.example.vk_homework.applist.domain.AppListItem
 import com.example.vk_homework.applist.domain.AppRepository
+import javax.inject.Inject
 
-class AppRepositoryImpl : AppRepository {
+class AppRepositoryImpl @Inject constructor() : AppRepository {
     override fun getAppList(): List<AppListItem> {
         val rawList = listOf(
             AppListItemDto(

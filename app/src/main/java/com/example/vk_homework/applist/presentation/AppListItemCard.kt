@@ -26,14 +26,14 @@ import com.example.vk_homework.applist.domain.AppListItem
 @Composable
 fun AppListItemCard(
     appListItem: AppListItem,
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
     onLogoClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick() },
+            .clickable { onClick(appListItem.name) },
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
