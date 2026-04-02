@@ -5,12 +5,11 @@ import com.google.gson.annotations.SerializedName
 data class AppDetailsDto(
     @SerializedName("id") val id: String?,
     @SerializedName("name") val rawName: String?,
-    val developerName: String?,
-    val categoryId: String?,
+    @SerializedName("developer") val developerName: String?,
+    @SerializedName("ageRating") val ageLimit: Int?,
+    @SerializedName("size") val sizeInMb: Float?,
     val categoryTitle: String?,
-    @SerializedName("age_limit") val ageLimit: Int?,
-    @SerializedName("size_mb") val sizeInMb: Float?,
     @SerializedName("iconUrl") val iconPath: String?,
-    @SerializedName("screenshots") val screenshots: List<String>?,
+    @SerializedName("screenshotUrlList") val screenshots: List<String>?,
     @SerializedName("description") val fullDescription: String?
 )

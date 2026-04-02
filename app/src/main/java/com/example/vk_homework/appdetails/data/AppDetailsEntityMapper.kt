@@ -16,7 +16,8 @@ class AppDetailsEntityMapper @Inject constructor() {
             size = entity.sizeInMb,
             iconUrl = entity.iconPath,
             screenshotUrlList = entity.screenshots,
-            description = entity.fullDescription
+            description = entity.fullDescription,
+            isInWishlist = entity.isInWishlist
         )
     }
 
@@ -30,7 +31,8 @@ class AppDetailsEntityMapper @Inject constructor() {
             sizeInMb = dto.sizeInMb ?: 0f,
             iconPath = dto.iconPath ?: "",
             screenshots = dto.screenshots ?: emptyList(),
-            fullDescription = dto.fullDescription ?: ""
+            fullDescription = dto.fullDescription ?: "",
+            isInWishlist = false
         )
     }
 }

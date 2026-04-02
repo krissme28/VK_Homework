@@ -13,5 +13,6 @@ data class AppDetailsEntity(
     val sizeInMb: Float,
     val iconPath: String,
     val screenshots: List<String>,
-    val fullDescription: String
+    val fullDescription: String,
+    val isInWishlist: Boolean = false
 )
