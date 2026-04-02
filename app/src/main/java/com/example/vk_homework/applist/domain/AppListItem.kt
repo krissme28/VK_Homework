@@ -1,6 +1,7 @@
 package com.example.vk_homework.applist.domain
 
 data class AppListItem(
+    val id: String,
     val name: String,
     val appCategory: AppListCategory,
     val iconUrl: String,

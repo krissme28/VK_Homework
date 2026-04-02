@@ -4,6 +4,7 @@ import com.example.vk_homework.applist.domain.AppListItem
 
 sealed class AppListState {
     data object Loading : AppListState()
+    data object Empty : AppListState()
 
     data class Content(
         val appList: List<AppListItem> = emptyList(),

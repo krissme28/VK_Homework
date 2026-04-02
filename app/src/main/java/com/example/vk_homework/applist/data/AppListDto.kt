@@ -1,10 +1,11 @@
 package com.example.vk_homework.applist.data
 
-import com.example.vk_homework.applist.domain.AppListCategory
+import com.google.gson.annotations.SerializedName
 
 data class AppListItemDto(
-    val name: String,
-    val appCategory: AppListCategory,
-    val iconUrl: String,
-    val description: String
+    @SerializedName("id") val id: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("category") val category: String,
+    @SerializedName("iconUrl") val iconUrl: String,
+    @SerializedName("description") val description: String
 )
