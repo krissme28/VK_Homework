@@ -1,5 +1,6 @@
 package com.example.vk_homework.applist.data
 
+import com.example.vk_homework.appdetails.data.AppDetailsDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -8,5 +9,5 @@ interface CatalogApi {
     suspend fun getCatalog(): List<AppListItemDto>
 
     @GET("catalog/{id}")
-    suspend fun getAppDetails(@Path("id") id: String): AppListItemDto
+    suspend fun getAppDetails(@Path("id") id: String): AppDetailsDto
 }

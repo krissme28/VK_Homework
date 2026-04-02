@@ -1,5 +1,5 @@
 package com.example.vk_homework.appdetails.domain
 
 interface AppDetailsRepository {
-    fun getAppDetails(): AppDetails
+    suspend fun getAppDetails(id: String): AppDetails
 }

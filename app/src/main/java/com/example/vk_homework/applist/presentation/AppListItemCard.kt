@@ -33,7 +33,7 @@ fun AppListItemCard(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable { onClick(appListItem.name) },
+            .clickable { onClick(appListItem.id.toString()) },
         verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(

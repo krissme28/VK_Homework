@@ -35,7 +35,7 @@ fun AppListContent(
             itemsIndexed(appList) { index, appListItem ->
                 AppListItemCard(
                     appListItem,
-                    onClick = onClick,
+                    onClick = { onClick(appListItem.id) },
                     onLogoClick = { onLogoClick(appListItem) }
                 )
 
