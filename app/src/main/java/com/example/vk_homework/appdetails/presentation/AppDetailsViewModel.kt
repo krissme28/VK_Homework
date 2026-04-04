@@ -17,29 +17,42 @@ class AppDetailsViewModel @Inject constructor(
     private val repository: AppDetailsRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
     private val appId: String? = savedStateHandle["id"]
 
     var appData by mutableStateOf<AppDetails?>(null)
         private set
 
     init {
-        println("LOG: ViewModel создана, appId = $appId")
+        appId?.let { id ->
+            observeAppDetails(id)
+            fetchInitialData(id)
+        }
+    }
+
+    private fun observeAppDetails(id: String) {
         viewModelScope.launch {
-            if (appId == null) {
-                android.util.Log.e("MY_APP_DEBUG", "Ошибка: appId is NULL!")
-                return@launch
-            }
-            appId?.let { id ->
-                try {
-                    println("LOG: Начинаю загрузку для ID: $id")
-                    val result = repository.getAppDetails(id)
-                    println("LOG: Данные успешно получены: ${result.name}")
-                    appData = result
-                } catch (e: Exception) {
-                    android.util.Log.e("MY_APP_DEBUG", "Ошибка загрузки: ${e.message}")
-                    e.printStackTrace()
+            repository.observeAppDetails(id)
+                .collect { details ->
+                    android.util.Log.d("MY_APP_DEBUG", "Flow получил данные: isInWishlist = ${details.isInWishlist}")
+                    appData = details
                 }
+        }
+    }
+
+    private fun fetchInitialData(id: String) {
+        viewModelScope.launch {
+            try {
+                repository.getAppDetails(id)
+            } catch (e: Exception) {
+                android.util.Log.e("MY_APP_DEBUG", "Ошибка загрузки: ${e.message}")
             }
+        }
+    }
+
+    fun toggleWishlist() {
+        viewModelScope.launch {
+            repository.toggleWishlist(appId ?: return@launch)
         }
     }
 }

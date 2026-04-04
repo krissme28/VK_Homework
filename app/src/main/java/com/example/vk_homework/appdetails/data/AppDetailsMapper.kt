@@ -8,13 +8,14 @@ import javax.inject.Inject
 fun AppDetailsDto.toDomain(): AppDetails {
     return AppDetails(
         name = this.rawName ?: "",
-        developer = Developer(name = this.developerName ?: ""),
-        appCategory = AppCategory(this.id?.toString() ?: "", this.categoryTitle ?: ""),
+        developer = Developer(name = this.developerName ?: "Неизвестен"),
+        appCategory = AppCategory(this.id ?: "", this.categoryTitle ?: "Разное"),
         ageRating = this.ageLimit ?: 0,
         size = this.sizeInMb ?: 0f,
         iconUrl = this.iconPath ?: "",
         screenshotUrlList = this.screenshots ?: emptyList(),
-        description = this.fullDescription ?: ""
+        description = this.fullDescription ?: "",
+        isInWishlist = false
     )
 }
 

@@ -4,12 +4,8 @@ import androidx.room.TypeConverter
 
 class AppDetailsConverters {
     @TypeConverter
-    fun fromStringList(value: List<String>): String {
-        return value.joinToString(separator = ",")
-    }
+    fun fromList(value: List<String>): String = value.joinToString(",")
 
     @TypeConverter
-    fun toStringList(value: String): List<String> {
-        return value.split(",").filter { it.isNotEmpty() }
-    }
+    fun toList(value: String): List<String> = value.split(",").filter { it.isNotBlank() }
 }

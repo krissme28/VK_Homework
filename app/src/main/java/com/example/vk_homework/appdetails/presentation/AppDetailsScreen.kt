@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -32,22 +34,28 @@ fun AppDetailsScreen(
     modifier: Modifier = Modifier,
 ) {
     val appDetails = viewModel.appData
-
     val context = LocalContext.current
     val underDevelopmentText = stringResource(R.string.under_developement)
-
+    val scrollState = rememberScrollState()
     var descriptionCollapsed by remember { mutableStateOf(false) }
     if (appDetails == null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
         }
     } else {
-        Column(modifier.safeDrawingPadding()) {
+        Column(
+            modifier = modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState)
+                .safeDrawingPadding()
+        ) {
             Toolbar(
                 onBackClick = onBackClick,
                 onShareClick = {
                     Toast.makeText(context, underDevelopmentText, Toast.LENGTH_SHORT).show()
                 },
+                onWishlistClick = { viewModel.toggleWishlist() },
+                isInWishlist = appDetails.isInWishlist
             )
             Spacer(Modifier.height(8.dp))
             AppDetailsHeader(
@@ -92,7 +100,7 @@ fun AppDetailsScreen(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp),
+                    .padding(start = 16.dp, bottom = 24.dp),
             )
         }
     }
