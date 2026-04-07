@@ -1,14 +1,14 @@
 package com.example.vk_homework.appdetails.presentation
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vk_homework.appdetails.domain.AppDetails
 import com.example.vk_homework.appdetails.domain.AppDetailsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,8 +20,8 @@ class AppDetailsViewModel @Inject constructor(
 
     private val appId: String? = savedStateHandle["id"]
 
-    var appData by mutableStateOf<AppDetails?>(null)
-        private set
+    private val _uiState = MutableStateFlow(AppDetailsState())
+    val uiState: StateFlow<AppDetailsState> = _uiState.asStateFlow()
 
     init {
         appId?.let { id ->
@@ -34,18 +34,20 @@ class AppDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             repository.observeAppDetails(id)
                 .collect { details ->
-                    android.util.Log.d("MY_APP_DEBUG", "Flow получил данные: isInWishlist = ${details.isInWishlist}")
-                    appData = details
+                    _uiState.update { it.copy(appDetails = details) }
                 }
         }
     }
 
     private fun fetchInitialData(id: String) {
         viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true) }
             try {
                 repository.getAppDetails(id)
             } catch (e: Exception) {
-                android.util.Log.e("MY_APP_DEBUG", "Ошибка загрузки: ${e.message}")
+                _uiState.update { it.copy(error = e.message) }
+            } finally {
+                _uiState.update { it.copy(isLoading = false) }
             }
         }
     }
