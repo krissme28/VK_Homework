@@ -15,11 +15,16 @@ hilt = "2.51.1"
 ksp = "2.0.21-1.0.25"
 coreKtxVersion = "1.18.0"
 foundation = "1.10.6"
+androidx-junit = "1.1.5"
+mockito = "5.23.0"
+mockitoKotlin = "6.3.0"
+kotlinxCoroutines = "1.9.0"
+mockk = "1.14.9"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -36,6 +41,10 @@ androidx-benchmark-macro-junit4 = { group = "androidx.benchmark", name = "benchm
 transport-runtime = { group = "com.google.android.datatransport", name = "transport-runtime", version.ref = "transportRuntime" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
